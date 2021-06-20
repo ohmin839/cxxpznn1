@@ -2,6 +2,8 @@
 
 namespace cxxpznn1
 {
+    // Grid
+
     Grid::Grid(unsigned int size, int** grid)
     {
         this->size = size;
@@ -61,5 +63,24 @@ namespace cxxpznn1
     bool Grid::operator!=(const Grid& other)
     {
         return !(*this == other);
+    }
+
+    // Direction
+    
+    std::vector<Direction::V> Direction::all_directions()
+    {
+        std::vector<Direction::V> dirs;
+
+        dirs.push_back(Direction::V::Up);
+        dirs.push_back(Direction::V::Right);
+        dirs.push_back(Direction::V::Down);
+        dirs.push_back(Direction::V::Left);
+
+        return dirs;
+    }
+    
+    Direction::V Direction::opposite_direction(Direction::V dir)
+    {
+        return (Direction::V)(-(int)dir);
     }
 }

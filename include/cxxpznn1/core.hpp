@@ -18,6 +18,21 @@ namespace cxxpznn1
             bool operator==(const Grid& grid);
             bool operator!=(const Grid& grid);
     };
+
+    class Direction
+    {
+        public:
+            enum class V
+            {
+                Up = 1,
+                Right = 2,
+                Down = -1,
+                Left = -2,
+                Nowhere = 0,
+            };
+            static std::vector<Direction::V> all_directions();
+            static Direction::V opposite_direction(Direction::V dir);
+    };
 }
 
 #endif

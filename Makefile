@@ -18,3 +18,11 @@ bin/test_grid: bin/core.o test/test_grid.cpp
 		bin/core.o \
 		-o bin/test_grid
 
+bin/test_direction: bin/core.o test/test_direction.cpp
+	g++ \
+		-std=c++17 \
+		-I./include \
+		test/test_direction.cpp \
+		bin/core.o \
+		-o bin/test_direction
+
