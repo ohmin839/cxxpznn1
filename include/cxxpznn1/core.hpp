@@ -14,7 +14,7 @@ namespace cxxpznn1
         public:
             Grid(unsigned int size, int** grid);
             Grid(const Grid& other);
-            ~Grid();
+            virtual ~Grid();
             bool operator==(const Grid& grid);
             bool operator!=(const Grid& grid);
     };
@@ -32,6 +32,26 @@ namespace cxxpznn1
             };
             static std::vector<Direction::V> all_directions();
             static Direction::V opposite_direction(Direction::V dir);
+    };
+
+    class Puzzle: Grid
+    {
+        private:
+            unsigned int empty_row = 0;
+            unsigned int empty_col = 0;
+        public:
+            static int** create_initial_grid(unsigned int size);
+            Puzzle(unsigned int size);
+            ~Puzzle();
+            unsigned int size_as_puzzle();
+            bool movable(Direction::V dir);
+            void move(Direction::V dir);
+            std::vector<Direction::V> movable_directions();
+            Direction::V move_random(Direction::V prev_dir);
+            void shuffle(unsigned int shuffles);
+            bool completed();
+            Grid as_grid();
+            friend std::ostream &operator<<(std::ostream& out, const Puzzle& pz);
     };
 }
 
