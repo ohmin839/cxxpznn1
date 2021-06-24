@@ -20,6 +20,14 @@ bin/cxxpznn1: bin/core.o src/cli.cpp
 		-L${HOME}/.local/lib \
 		-lboost_program_options
 
+.PHONY: build
+build: bin/cxxpznn1
+
+.PHONY: install
+install: bin/cxxpznn1
+	test -z ${INSTALL_DIR} || cp bin/cxxpznn1 ${INSTALL_DIR}/bin
+
+
 bin/test_grid: bin/core.o test/test_grid.cpp
 	g++ \
 		-std=c++17 \
